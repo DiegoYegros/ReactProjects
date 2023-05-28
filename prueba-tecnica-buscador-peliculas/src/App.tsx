@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { Movies } from './components/Movies.tsx'
 import { useMovies } from './hooks/useMovies.ts'
+import { Buses } from './components/Buses.tsx'
 
 
 function useSearch() {
@@ -57,6 +58,7 @@ function App() {
 
       <main>
         {loading ? <p>Loading...</p> : <Movies movies={movies} />}
+        <Buses />
       </main>
 
     </div>
