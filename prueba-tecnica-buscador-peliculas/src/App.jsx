@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { Movies } from './components/Movies';
 import { useMovies } from './hooks/useMovies';
 import { Buses } from './components/Buses';
 
-function useSearch(): [string, Dispatch<SetStateAction<string>>, string] {
+function useSearch() {
   const [search, updateSearch] = useState('');
   const [error, setError] = useState('');
   const isFirstInput = useRef(true);
@@ -31,17 +31,17 @@ function useSearch(): [string, Dispatch<SetStateAction<string>>, string] {
   return [search, updateSearch, error];
 }
 
-function App(): JSX.Element {
+function App() {
   const [sort, setSort] = useState(false);
   const [search, updateSearch, error] = useSearch();
   const { movies, loading, getMovies } = useMovies({ search, sort });
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     getMovies();
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event) => {
     updateSearch(event.target.value);
   };
 
